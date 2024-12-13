@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Reescreve /login para index.php?route=login
+RewriteRule ^login$ index.php?route=login [NC,L]
+
+# Reescreve /sigin para index.php?route=sigin
+RewriteRule ^sigin$ index.php?route=sigin [NC,L]
+
+# Reescreve /logout para index.php?route=logout
+RewriteRule ^logout$ index.php?route=logout [NC,L]
+
+RewriteRule ^home$ index.php?route=home [NC,L]
+# Se nenhuma regra acima for correspondida, redireciona para index.php
+RewriteRule ^(.*)$ index.php [NC,L]
+
