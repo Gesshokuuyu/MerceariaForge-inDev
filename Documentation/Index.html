@@ -1,0 +1,103 @@
+<!-- 
+====================== Regras para documentação ================================
+
+°Toda mudança feita no projeto, tanto no código, quanto banco ou regras de negócios
+devem ser documentados nesse arquivo.
+
+°Explicação De documentação sobre o banco
+Exemplo:
+
+Data: 13/12/2024
+|Tipo: edição de tabela
+Explicacao: Tal tabela foi editada por isso e por aquilo
+Nome tabela/view/function: TabelaClientes
+create:
+    CREATE TABLE table_name (
+        column1 datatype,
+        column2 datatype,
+        column3 datatype,
+    ....
+    );
+
+°Explicacao sobre mudancas no codigo
+Data: 13/12/2024
+Tipo: Mudanca no codigo ou Regras de negocios
+Nome dos arquivos: exemplo.php
+Explicacao da mudanca: mudanca por isso e aquilo
+
+°Ecxplicacao de implementacoes de melhorias
+Data: 13/12/2024
+Tipo: desenv. Melhoria
+Nome dos arquivos adicionados ou modificados: exemplo.php, exemplo2.php
+Explicacao da melhoria: tal melhoria por isso
+
+================================================================================
+
+=============================Inicio Projeto==================================
+Dia 13/12/2024
+Hoje, o projeto foi estruturado da certa forma:
+
+ /MerceariaForge-InDev
+    ├── /app --Abrange a view, controller e models--
+    │    ├── /controllers -- exemplos --
+    │    │    ├── DashboardController.php
+    │    │    ├── LoginController.php
+    │    │    └── SessionController.php
+    │    ├── /models -- exemplos --
+    │    │    └── UserModel.php
+    │    ├── /views -- exemplos --
+    │    │    ├── login.php
+    │    │    ├── dashboard.php
+    │    │    └── templates -- exemplos --
+    │    │         ├── header.php
+    │    │         └── footer.php
+    │    └── /sessions -- Controlador de sessão/segurança --
+    │         └── SessionManager.php
+    ├── /public -- Vai ser o controlador inicial de rotas -- 
+    │    ├── index.php
+    │    ├── /css
+    │    │    └── styles.css
+    │    ├── /js
+    │    │    └── scripts.js
+    └── /config -- Configuração do banco, sql´s e rotas
+         ├── config.php
+         └── routes.php
+
+=========DataBase Inicial - Config ============
+Banco de dados:
+MySql
+user: Root
+pass: ''
+dbname: 'MFG'
+===============================================
+
+=============Ideia Inicial do projeto=======================
+Data 13/12/2024
+
+A ideia inicial do projeto é ser uma aplicação de gestão basica para
+a mercearia da forge.
+
+Como ira funcionar:
+A ideia do sistema é utilizar a linguagem PHP em conjunto com js, fazendo
+requisições ajax para capturar dados.
+
+Para cadastros, a ideia é padronizar com requisições tambem, para os controladores
+de cada cadastro
+Exemplo:
+Cadastro de Item, ao confirmar, ira mandar uma requisição ao modulo controlador do
+item, que ira passar ao model e ira fazer o tratamento de dados e cadastro no banco.
+
+
+============================================================
+
+====================Regras de Negocios =====================
+
+--------Explicacao basica ou detalhada de cada regra--------
+
+
+------------------------------------------------------------
+============================================================
+
+
+
+-->
