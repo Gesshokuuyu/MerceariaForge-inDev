@@ -13,8 +13,7 @@
 </head>
 <body style="background-color: #f7f7f7; font-family: 'Arial', sans-serif;">
     <?php include_once 'Modules/Menu.php'; ?>
-    <!-- <div class="container"> -->
-        <div class="box-dif">
+    <div class="container">
             <?php include_once 'Modules/GraficoHome.php'; ?>
         </div>
     <!-- </div> -->
