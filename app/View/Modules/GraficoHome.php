@@ -74,26 +74,26 @@
         <div class="row text-center mb-4">
             <div class="col-md-3">
                 <div class="info-box blue">
-                    <h5>495</h5>
-                    <p>New Users</p>
+                    <h5>1</h5>
+                    <p>Usuario</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box red">
-                    <h5>947</h5>
-                    <p>Sales</p>
+                    <h5>8 </h5>
+                    <p>Fechamentos</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box yellow">
-                    <h5>328</h5>
-                    <p>New Orders</p>
+                    <h5>100+</h5>
+                    <p>Itens</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box green">
-                    <h5>10,328</h5>
-                    <p>Total Profit</p>
+                    <h5>5000+</h5>
+                    <p>Total Entradas</p>
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card p-3">
-                    <h5>Earning Graph</h5>
+                    <h5>Gráfico de Ganhos</h5>
                     <div class="chart-container">
                         <canvas id="barChart"></canvas>
                     </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="col-md-6">
                 <div class="card p-3">
-                    <h5>New Earnings</h5>
+                    <h5>Novos Ganhos</h5>
                     <div class="chart-container">
                         <canvas id="lineChart"></canvas>
                     </div>
@@ -120,14 +120,24 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card p-3">
-                    <h5>Total Earnings</h5>
+                    <h5>Total de Ganhos</h5>
                     <div class="chart-container">
                         <canvas id="areaChart"></canvas>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h5>Distribuição de Ganhos</h5>
+                    <div class="chart-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
     <script>
         // Bar Chart
@@ -135,7 +145,7 @@
         new Chart(barChartCtx, {
             type: 'bar',
             data: {
-                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
                 datasets: [{
                     label: 'Earnings',
                     data: [80, 60, 40, 70, 30, 50, 90, 60, 70, 60, 70, 80],
@@ -157,9 +167,9 @@
         new Chart(lineChartCtx, {
             type: 'line',
             data: {
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
                 datasets: [{
-                    label: 'Daily Earnings',
+                    label: 'Ganhos Diarios',
                     data: [30, 50, 40, 60, 57],
                     backgroundColor: 'rgba(53, 162, 235, 0.4)',
                     borderColor: 'rgb(53, 162, 235)',
@@ -183,9 +193,9 @@
         new Chart(areaChartCtx, {
             type: 'line',
             data: {
-                labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+                labels: Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`),
                 datasets: [{
-                    label: 'Earnings Progress',
+                    label: 'Progresso de Ganhos',
                     data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 100)),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgb(75, 192, 192)',
@@ -203,4 +213,37 @@
                 }
             }
         });
+
+
+    // Pie Chart
+    const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieChartCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Serviços', 'Produtos', 'Outros'],
+            datasets: [{
+                data: [40, 30, 30], // Dados fictícios
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+
     </script>
