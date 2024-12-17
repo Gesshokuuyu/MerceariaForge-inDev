@@ -24,7 +24,7 @@
         <div class="col-md-4">
             <div class="card p-4 shadow-sm">
                 <h3 class="text-center">Crie sua Conta</h3>
-                <form id="registerForm">
+                <form id="registerForm" name="registerForm" method = "post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome Completo</label>
                         <input type="text" class="form-control" id="name" placeholder="Digite seu nome completo" required>
@@ -53,13 +53,15 @@
 
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
+<!-- JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     // Função para simular o processo de cadastro e exibir o SweetAlert
     document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita o envio real do formulário
+        event.preventDefault(); 
 
         var name = document.getElementById('name').value;
         var email = document.getElementById('email').value;
@@ -75,15 +77,31 @@
                 confirmButtonText: 'Tentar novamente'
             });
         } else if (name && email && password) {
-            // Cadastro bem-sucedido
-            Swal.fire({
+
+            $.ajax({
+                url : "../Controller/LoginController.php",
+                type : 'post',
+                data : {
+                    name : name,
+                    email : email, 
+                    password: password
+                },
+            })
+            .done(function(msg){
+                Swal.fire({
                 title: 'Sucesso!',
                 text: 'Cadastro realizado com sucesso. Você pode fazer login agora.',
                 icon: 'success',
                 confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = "login.html"; // Redireciona para a página de login
+                }).then(() => {
+                    window.location.href = "login"; // Redireciona para a página de login
+                });
+            })
+            .fail(function(msg){
+                alert(msg);
             });
+            // Cadastro bem-sucedido
+            
         } else {
             // Campos obrigatórios não preenchidos
             Swal.fire({
