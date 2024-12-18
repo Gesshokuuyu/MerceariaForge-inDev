@@ -54,7 +54,7 @@
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
 <!-- JQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -79,27 +79,28 @@
         } else if (name && email && password) {
 
             $.ajax({
-                url : "../Controller/LoginController.php",
+                url : "../app/Controller/LoginController.php",
                 type : 'post',
                 data : {
+                    function: 'CreateAccount' ,
                     name : name,
                     email : email, 
                     password: password
                 },
             })
-            .done(function(msg){
-                Swal.fire({
-                title: 'Sucesso!',
-                text: 'Cadastro realizado com sucesso. Você pode fazer login agora.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = "login"; // Redireciona para a página de login
-                });
-            })
-            .fail(function(msg){
-                alert(msg);
-            });
+            // .done(function(msg){
+            //     Swal.fire({
+            //     title: 'Sucesso!',
+            //     text: 'Cadastro realizado com sucesso. Você pode fazer login agora.',
+            //     icon: 'success',
+            //     confirmButtonText: 'OK'
+            //     }).then(() => {
+            //         window.location.href = "login"; // Redireciona para a página de login
+            //     });
+            // })
+            // .fail(function(msg){
+            //     alert(msg);
+            // });
             // Cadastro bem-sucedido
             
         } else {

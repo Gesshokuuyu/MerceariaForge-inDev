@@ -65,7 +65,7 @@
                 confirmButtonText: 'OK'
             }).then(() => {
             // Redireciona para a home após o OK do SweetAlert
-            location.href = '?route=home';  // Caminho para a página de home
+            location.href = 'home';  // Caminho para a página de home
         });
         } else {
             // Falha no login
