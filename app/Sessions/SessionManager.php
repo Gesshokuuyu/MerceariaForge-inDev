@@ -2,6 +2,12 @@
 
 class SessionManager
 {
+
+    public function __construct()
+    {
+        $this->startSession();
+    }
+
     public static function startSession()
     {
         if (session_status() == PHP_SESSION_NONE) {

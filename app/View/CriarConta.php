@@ -41,7 +41,7 @@
                         <label for="confirmPassword" class="form-label">Confirmar Senha</label>
                         <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                    <button type="button" onclick="Register()" class="btn btn-primary w-100">Cadastrar</button>
                 </form>
                 <div class="text-center mt-3">
                     <p>Já tem uma conta? <a href="login">Faça login</a></p>
@@ -60,7 +60,7 @@
 
 <script>
     // Função para simular o processo de cadastro e exibir o SweetAlert
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
+    function Register() {
         event.preventDefault(); 
 
         var name = document.getElementById('name').value;
@@ -76,35 +76,49 @@
                 icon: 'error',
                 confirmButtonText: 'Tentar novamente'
             });
-        } else if (name && email && password) {
-
+        } else if (name && email && password && confirmPassword) {
             $.ajax({
-                url : "../app/Controller/LoginController.php",
-                type : 'post',
-                data : {
-                    function: 'CreateAccount' ,
-                    name : name,
-                    email : email, 
-                    password: password
+                url: "../app/Controller/LoginController.php",
+                type: 'post',
+                data: {
+                    function: 'CreateAccount',
+                    name: name,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword
                 },
-            })
-            // .done(function(msg){
-            //     Swal.fire({
-            //     title: 'Sucesso!',
-            //     text: 'Cadastro realizado com sucesso. Você pode fazer login agora.',
-            //     icon: 'success',
-            //     confirmButtonText: 'OK'
-            //     }).then(() => {
-            //         window.location.href = "login"; // Redireciona para a página de login
-            //     });
-            // })
-            // .fail(function(msg){
-            //     alert(msg);
-            // });
-            // Cadastro bem-sucedido
+                success: function(data) {
+                    data = JSON.parse(data)
+                    if (data.success === false) {
+                        Swal.fire({
+                            title: data.message,  
+                            text: data.message, 
+                            icon: 'error',
+                            confirmButtonText: 'Tentar novamente'
+                        });
+                    } else if (data.success === true) {
+                        Swal.fire({
+                            title: 'Sucesso!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href = "login";
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("Erro na requisição AJAX: ", error);
+                    Swal.fire({
+                        title: 'Erro!',
+                        text: 'Houve um erro ao processar sua solicitação.',
+                        icon: 'error',
+                        confirmButtonText: 'Fechar'
+                    });
+                }
+            });
             
         } else {
-            // Campos obrigatórios não preenchidos
             Swal.fire({
                 title: 'Erro!',
                 text: 'Por favor, preencha todos os campos.',
@@ -112,7 +126,7 @@
                 confirmButtonText: 'Tentar novamente'
             });
         }
-    });
+    };
 </script>
 
 </body>
