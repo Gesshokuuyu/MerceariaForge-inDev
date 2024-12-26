@@ -1,7 +1,11 @@
 <?php
 require_once '../config/routes.php';
+require_once '../app/Sessions/SessionManager.php';
 
-// Gerencia as rotas
+$SessionManager = new SessionManager();
+if($SessionManager->isLoggedIn() !== true){
+    header('Location: /login');
+}
 $route = $_GET['route'] ?? 'login';
 
 switch ($route) {

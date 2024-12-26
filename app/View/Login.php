@@ -47,6 +47,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.5/dist/sweetalert2.all.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <script>
     // Função para simular a autenticação e exibir o SweetAlert
@@ -56,17 +59,45 @@
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
-        if (email === 'teste@teste.com' && password === '123456') {
-            // Login bem-sucedido
-            Swal.fire({
-                title: 'Sucesso!',
-                text: 'Bem-vindo ao seu painel.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then(() => {
-            // Redireciona para a home após o OK do SweetAlert
-            location.href = 'home';  // Caminho para a página de home
-        });
+        if (email  && password ) {
+            $.ajax({
+                url: "../app/Controller/LoginController.php",
+                type: 'post',
+                data: {
+                    function: 'login',
+                    email: email,
+                    password: password,
+                },
+                success: function(data){
+                    data = JSON.parse(data)
+                    if (data.success === false) {
+                        Swal.fire({
+                            title: data.message,  
+                            text: data.message, 
+                            icon: 'error',
+                            confirmButtonText: 'Tentar novamente'
+                        });
+                    } else if (data.success === true) {
+                        Swal.fire({
+                            title: 'Sucesso!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href = "home";
+                        });
+                    }
+                }
+            })
+        //     Swal.fire({
+        //         title: 'Sucesso!',
+        //         text: 'Bem-vindo ao seu painel.',
+        //         icon: 'success',
+        //         confirmButtonText: 'OK'
+        //     }).then(() => {
+        //     // Redireciona para a home após o OK do SweetAlert
+        //     // location.href = 'home';  // Caminho para a página de home
+        // });
         } else {
             // Falha no login
             Swal.fire({

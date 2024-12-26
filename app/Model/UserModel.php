@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../config/QGen.php';
 class UserModel extends UserQueries 
 {
    private $Name;
+   private $id;
    private $Password;
    private $Email;
    private $NewUser;
@@ -17,10 +18,10 @@ class UserModel extends UserQueries
    const _PASSWORD = 'USER_PASSWORD';  
 
 
-   public function __construct($User = null, UserQueries $userQueries = new UserQueries())
+   public function __construct($User = null, UserQueries $userQueries = new UserQueries(), $typeIni = 'CreateAccount')
    {
        $this->NewUser = $User;
-       $this->InitializeUser($this->NewUser);
+       $this->InitializeUser( $typeIni);
        $this->userQueries = $userQueries;
    }
 
@@ -76,13 +77,20 @@ class UserModel extends UserQueries
       $this->NewUser = $NewUser;
    }
 
-   public function InitializeUser() {
+   public function InitializeUser($type = 'CreateAccount') {
      if($this->getNewUser() && is_array($this->getNewUser())){
 
         $DataUser = $this->getNewUser();
-        $this->setName($DataUser['name']);
-        $this->setEmail($DataUser['email']);
-        $this->setPassword($DataUser['password']);
+        if($type == 'CreateAccount'){
+           $this->setName($DataUser['name']);
+           $this->setEmail($DataUser['email']);
+           $this->setPassword($DataUser['password']);
+        }else{
+           $this->setId($DataUser['USER_ID']);
+           $this->setName($DataUser['USER_NAME']);
+           $this->setEmail($DataUser['USER_EMAIL']);
+           $this->setPassword($DataUser['USER_PASSWORD']);
+        }
       //   var_dump($this->getName());
 
         return $this;
@@ -131,6 +139,22 @@ public function VerifyEmailUser($email)
         return $user ? 1 : 2;
     }
 
+    public function getUSerByEmailLogin($email)
+    {
+        if (!$this->userQueries) {
+            throw new Exception("UserQueries não foi inicializado.");
+        }
+        $user = $this->userQueries->getUserByEmail($email);
+        return $user;
+    }
 
-   
+   public function getId()
+   {
+      return $this->id;
+   }
+
+   public function setId($id)
+   {
+      $this->id = $id;
+   }
 }

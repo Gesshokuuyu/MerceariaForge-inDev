@@ -27,8 +27,13 @@ class LoginController extends UserModel {
                 }
                 
                 return 3;
-            } else {
-
+            } elseif($type == 'login') {
+                $verifyEmail = $this->getUSerByEmailLogin($dataUser['email']);
+                $user = new UserModel($verifyEmail[0], new UserQueries(), 'login');
+                    if($user->getPassword()){
+                        $verifyPass = $this->verifyPassword($dataUser['password'], $user->getPassword());
+                        return $verifyPass;
+                    }
             }
         } else {
             return [
@@ -75,8 +80,29 @@ class LoginController extends UserModel {
 
 
     public function login() {
+        $dataUser = $_REQUEST;
     
-        echo "Login efetuado com sucesso!";
+        $verify = $this->VerifyLoginUser($dataUser, 'login');
+
+        if($verify === true ){
+            $user = $this->getUSerByEmailLogin($dataUser['email']);
+            $user = new UserModel($user[0], new UserQueries(), 'login');
+            $SessionManager = new SessionManager();
+            $SessionManager::set('user_id', $user->getId());
+            echo json_encode(
+                [
+                    'message' => 'Login efetuado com Sucesso',
+                    'success' => true
+                ]
+            );
+        }else{
+            echo json_encode(
+                [
+                    'message' => 'Dados de login incorretos!',
+                    'success' => false
+                ]
+            );
+        }
     }
 }
 

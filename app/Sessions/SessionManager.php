@@ -6,6 +6,7 @@ class SessionManager
     public function __construct()
     {
         $this->startSession();
+        $this->isLoggedIn();
     }
 
     public static function startSession()
