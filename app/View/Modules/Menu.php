@@ -1,3 +1,10 @@
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
 <nav class="navbar bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand">
@@ -17,8 +24,8 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i>Home</li>
-                        <li class="list-group-item"><i class="bi bi-gear me-2"></i>Painel Administrativo</li>
+                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i><a href="home">Home</a> </li>
+                        <li class="list-group-item"><i class="bi bi-gear me-2"></i><a href="PainelAdm">Painel Administrativo</a></li>
                         <li class="list-group-item"><i class="bi bi-bar-chart me-2"></i>DashBoards</li>
                         <li class="list-group-item"><i class="bi bi-box me-2"></i>Itens</li>
                         <li class="list-group-item"><i class="bi bi-calendar3 me-2"></i>Fechamento Mensal</li>
