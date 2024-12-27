@@ -35,6 +35,9 @@ switch ($route) {
     case 'CadastroPedido';
         include_once '../app/View/CadastroPedido.php';
         break;
+    case 'CadastroCliente';
+        include_once '../app/View/Clientes.php';
+        break;
     default:
         echo "Página não encontrada.";
         break;

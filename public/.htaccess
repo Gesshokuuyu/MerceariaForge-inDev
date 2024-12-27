@@ -19,6 +19,9 @@ RewriteRule ^CadastroItem$ index.php?route=CadastroItem [NC,L]
 
 RewriteRule ^CadastroPedido$ index.php?route=CadastroPedido [NC,L]
 
+RewriteRule ^CadastroCliente$ index.php?route=CadastroCliente [NC,L]
+
+
 
 
 

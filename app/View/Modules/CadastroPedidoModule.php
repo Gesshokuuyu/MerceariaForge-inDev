@@ -78,13 +78,17 @@
         <div class="form-section">
             <h4>Itens do Pedido</h4>
             <form id="pedidoItensForm" class="row g-3">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <label for="itemDescricao" class="form-label">Descrição do Item</label>
                     <input type="text" class="form-control" id="itemDescricao" placeholder="Digite a descrição do item" required>
                 </div>
                 <div class="col-md-4">
                     <label for="itemQuantidade" class="form-label">Quantidade</label>
                     <input type="number" class="form-control" id="itemQuantidade" placeholder="Quantidade" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="itemPreco" class="form-label">Preço(Não Obrigatório):</label>
+                    <input type="number" class="form-control" id="itemPreco" placeholder="Preço">
                 </div>
                 <div class="col-12 text-end">
                     <button type="button" class="btn btn-secondary" id="addItem">Adicionar Item</button>
