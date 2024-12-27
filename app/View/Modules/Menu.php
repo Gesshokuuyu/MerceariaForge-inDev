@@ -16,7 +16,6 @@
                 </div>
             </a>
 
-            <!-- Offcanvas Menu -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Menu</h5>
@@ -25,7 +24,7 @@
                 <div class="offcanvas-body">
                     <ul class="list-group">
                         <li class="list-group-item"><i class="bi bi-house-door me-2"></i><a href="home">Home</a> </li>
-                        <li class="list-group-item"><i class="bi bi-gear me-2"></i><a href="PainelAdm">Painel Administrativo</a></li>
+                        <li class="list-group-item"><i class="bi bi-gear me-2"></i><a href="PainelPed">Painel De </a></li>
                         <li class="list-group-item"><i class="bi bi-bar-chart me-2"></i>DashBoards</li>
                         <li class="list-group-item"><i class="bi bi-box me-2"></i>Itens</li>
                         <li class="list-group-item"><i class="bi bi-calendar3 me-2"></i>Fechamento Mensal</li>

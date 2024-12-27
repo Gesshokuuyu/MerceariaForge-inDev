@@ -23,8 +23,8 @@ switch ($route) {
     case 'home';
         include_once '../app/View/Home.php';
         break;
-    case 'PainelAdm';
-        include_once '../app/View/PainelAdm.php';
+    case 'PainelPed';
+        include_once '../app/View/PainelPed.php';
         break;
     default:
         echo "Página não encontrada.";

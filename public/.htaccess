@@ -11,7 +11,7 @@ RewriteRule ^logout$ index.php?route=logout [NC,L]
 
 RewriteRule ^home$ index.php?route=home [NC,L]
 
-RewriteRule ^PainelAdm$ index.php?route=PainelAdm [NC,L]
+RewriteRule ^PainelPed$ index.php?route=PainelPed [NC,L]
 
 # Se nenhuma regra acima for correspondida, redireciona para index.php
 RewriteRule ^(.*)$ index.php [NC,L]
