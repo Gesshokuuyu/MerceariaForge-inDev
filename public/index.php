@@ -26,6 +26,15 @@ switch ($route) {
     case 'PainelPed';
         include_once '../app/View/PainelPed.php';
         break;
+    case 'Itens';
+        include_once '../app/View/Itens.php';
+        break;
+    case 'CadastroItem';
+        include_once '../app/View/ItemCadastro.php';
+        break;
+    case 'CadastroPedido';
+        include_once '../app/View/CadastroPedido.php';
+        break;
     default:
         echo "Página não encontrada.";
         break;

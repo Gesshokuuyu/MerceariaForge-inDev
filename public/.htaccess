@@ -13,6 +13,15 @@ RewriteRule ^home$ index.php?route=home [NC,L]
 
 RewriteRule ^PainelPed$ index.php?route=PainelPed [NC,L]
 
+RewriteRule ^Itens$ index.php?route=Itens [NC,L]
+
+RewriteRule ^CadastroItem$ index.php?route=CadastroItem [NC,L]
+
+RewriteRule ^CadastroPedido$ index.php?route=CadastroPedido [NC,L]
+
+
+
+
 # Se nenhuma regra acima for correspondida, redireciona para index.php
 RewriteRule ^(.*)$ index.php [NC,L]
 

@@ -74,24 +74,28 @@
         <div class="row text-center mb-4">
             <div class="col-md-3">
                 <div class="info-box blue">
+                    <p><i class="bi bi-people fs-4"></i></p>
                     <h5>1</h5>
                     <p>Usuario</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box red">
+                    <p><i class="bi bi-bag-check fs-4"></i></p>
                     <h5>8 </h5>
                     <p>Fechamentos</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box yellow">
+                    <p><i class="bi bi-boxes fs-4"></i></p>
                     <h5>100+</h5>
                     <p>Itens</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="info-box green">
+                    <p><i class="bi bi-cash-coin fs-4"></i></p>
                     <h5>5000+</h5>
                     <p>Total Entradas</p>
                 </div>
